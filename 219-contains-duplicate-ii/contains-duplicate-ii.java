@@ -1,19 +1,12 @@
-class Solution {
+public class Solution {
     public boolean containsNearbyDuplicate(int[] nums, int k) {
-        
-        Set<Integer> set = new HashSet<>();
-
-        for (int i=0; i<nums.length; ++i){
-            if (set.contains(nums[i])) return true;
-            set.add(nums[i]);
-            if (set.size()>k){
-                set.remove(nums[i-k]);
+        for (int L = 0; L < nums.length; L++) {
+            for (int R = L + 1; R < Math.min(nums.length, L + k + 1); R++) {
+                if (nums[L] == nums[R]) {
+                    return true;
+                }
             }
         }
-            return false;
-
-
-            // git-push
-
+        return false;
     }
 }
