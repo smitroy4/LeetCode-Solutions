@@ -6,18 +6,24 @@ class Solution {
             return false;
         }
 
-        //creation of 2 hashmaps to get the chars and number of occurences in the string
-        HashMap<Character, Integer> countS = new HashMap<>();
-        HashMap<Character, Integer> countT = new HashMap<>();
+        //created a int[]
+        int count[] = new int[26];
 
-        //lopping through the string to put all the chars and ints into the hashmap
-        for(int i =0; i < s.length(); i++){
-            countS.put(s.charAt(i), countS.getOrDefault(s.charAt(i), 0) + 1);
-            countT.put(t.charAt(i), countT.getOrDefault(t.charAt(i), 0) + 1);
+        //lopped through the strings to count the character count
+        for(int i = 0; i< s.length(); i++){
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
         }
 
-        //final check
-        return countS.equals(countT);
+        // another loop to iterate over the count to check whether they're zero
+        for(int val : count){
+            if (val != 0){
+                return false;
+            }
+        }
+
+        // finally returned true
+        return true;
         
     }
 }
