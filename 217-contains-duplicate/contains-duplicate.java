@@ -4,14 +4,14 @@ class Solution {
         HashSet<Integer> set = new HashSet<>();
 
         for(int n : nums){
+            if(set.contains(n)){
+                return true;
+            }
+
             set.add(n);
         }
 
-        if(set.size()==nums.length){
-            return false;
-        }
-
-        return true;
+        return false;
         
     }
 }
