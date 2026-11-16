@@ -1,15 +1,12 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        Set<Integer> set = new HashSet<>(); //create new empty set
-
-        for(int n : nums){      //put all the elements of arr to the new set
-            set.add(n);
+        HashSet<Integer>set=new HashSet<>();
+        for(int i=0; i<nums.length; i++){
+            if(set.contains(nums[i])){
+                return true;
+            }
+            set.add(nums[i]);
         }
-
-        if(set.size() != nums.length){
-            return true;
-        }   //return whether the size of set != arr
-
         return false;
-    }
+}
 }
